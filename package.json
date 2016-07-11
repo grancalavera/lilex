@@ -1,0 +1,24 @@
+{
+  "name": "@grancalavera/life-lexicon",
+  "version": "0.0.0",
+  "description": "Parses and exports Life Lexicon patterns as 1D arrays",
+  "main": "main.js",
+  "scripts": {
+    "test": "npm test "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elgrancalavera/life-lexicon.git"
+  },
+  "keywords": [
+    "game",
+    "of",
+    "life"
+  ],
+  "author": "leoncoto@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/elgrancalavera/life-lexicon/issues"
+  },
+  "homepage": "https://github.com/elgrancalavera/life-lexicon#readme"
+}
