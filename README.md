@@ -1,10 +1,10 @@
 # life-lexicon
 
-Parses and exports Life Lexicon patterns as 2D arrays
+> Parses Life Lexicon to JSON
 
 ## The Life lexicon
 
->This project uses data from Stephen A. Silver's life lexicon, copyright and credits as follows
+This project uses the data from Stephen A. Silver's life lexicon, copyright and credits as follows:
 
 ```
 LIFE LEXICON
