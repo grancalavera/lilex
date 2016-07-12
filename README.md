@@ -1,4 +1,4 @@
-# life-lexicon
+# lilex
 
 > Parses Life Lexicon to JSON
 
