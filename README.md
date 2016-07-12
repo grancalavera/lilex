@@ -1,6 +1,6 @@
 # life-lexicon
 
-Parses and exports Life Lexicon patterns as 1D arrays
+Parses and exports Life Lexicon patterns as 2D arrays
 
 ## The Life lexicon
 
