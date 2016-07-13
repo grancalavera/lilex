@@ -10,5 +10,5 @@ The Life Lexicon
 Game of Life.  It is also available in single-page and multipage
 HTML versions."
 
-The latest versions of this lexicon (both HTML and ASCII)should be available from the [Life Lexicon Home Page](http://www.argentum.freeserve.co.uk/lex_home.htm)
+The latest versions of this lexicon (both HTML and ASCII) should be available from the [Life Lexicon Home Page](http://www.argentum.freeserve.co.uk/lex_home.htm)
 
