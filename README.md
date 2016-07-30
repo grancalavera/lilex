@@ -64,7 +64,5 @@ Running lilex will produce a JSON stream to stdout. This stream is a single obje
 }
 ```
 
-Is up to you how to consume lilex's output, but the way I use it is just redirecting stdout it to a file.
-
 [life-lexicon]:http://www.argentum.freeserve.co.uk/lex_home.htm
 [life-lexicon-ascii]:http://www.argentum.freeserve.co.uk/lex_asc.zip
