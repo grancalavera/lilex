@@ -47,9 +47,8 @@ The Life Lexicon is divided in to three main sections:
 1. An introductory section. This section includes a brief introduction to the Life Lexicon, along with credits, project description, format description and project scope.
 
 1. A list of terms related to the Game of Life. Some of this terms are patters and some of them are not. lilex parses all the terms and them split them into two separate categories:
-
-  - terms: includes non-pattern and pattern terms
-  - patterns: includes only terms which are patterns
+    - terms: includes non-pattern and pattern terms
+    - patterns: includes only terms which are patterns
 
 1. Bibliography.
 
