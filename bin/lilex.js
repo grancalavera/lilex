@@ -52,7 +52,7 @@ function usage() {
 Usage
 
 Download and expand the plain text ASCII version of the Life Lexicon. Once
-expanded, you will endup with a directoy with the following files:
+expanded, you will end-up with a directory with the following files:
 
 lex_asc
 ├── README
