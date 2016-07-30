@@ -12,7 +12,7 @@ The latest versions of this lexicon (both HTML and ASCII) should be available fr
 
 ## Requirements
 
-Download and expand the [plain text ASCII verion][life-lexicon-ascii] of the Life Lexicon. Once expanded, you will endup with a directoy with the following files:
+Download and expand the [plain text ASCII version][life-lexicon-ascii] of the Life Lexicon. Once expanded, you will end-up with a directory with the following files:
 
 ```
 lex_asc
@@ -36,7 +36,7 @@ lilex [path/to/lexicon.txt] > lexicon.json
 
 ## Why?
 
-I was looking for sources of patterns for a Game of Life side project, and I ended up finding the [Life Lexicon Home Page][life-lexicon], which is an amazing online resource of all-things Game of Life. I started copy pasting pattens and writing small scripts to convert them into consumable JSON data, and at some point I decided I wanted them all.
+I was looking for sources of patterns for a Game of Life side project, and I ended up finding the [Life Lexicon Home Page][life-lexicon], which is an amazing on-line resource of all-things Game of Life. I started copy pasting pattens and writing small scripts to convert them into consumable JSON data, and at some point I decided I wanted them all.
 
 There are several download formats for the Life Lexicon, and the [plain text ASCII version][life-lexicon-ascii] is very regular and easy to parse. And that's the story.
 
