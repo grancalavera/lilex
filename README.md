@@ -12,7 +12,19 @@ The latest versions of this lexicon (both HTML and ASCII) should be available fr
 
 ## Requirements
 
-Download and expand the [plain text ASCII verion][life-lexicon-ascii] of the Life Lexicon.
+Download and expand the [plain text ASCII verion][life-lexicon-ascii] of the Life Lexicon. Once expanded, you will endup with a directoy with the following files:
+
+```
+lex_asc
+├── README
+├── emacs.txt
+├── lexicon-clean.txt
+├── lexicon-small.txt
+├── lexicon.txt
+└── lifelex.el
+```
+
+The file that you need to use is `lexicon.txt`.
 
 ## Usage
 
