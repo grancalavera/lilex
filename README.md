@@ -48,8 +48,8 @@ The Life Lexicon is divided in to three main sections:
 
 1. A list of terms related to the Game of Life. Some of this terms are patters and some of them are not. lilex parses all the terms and them split them into two separate categories:
 
-  a. terms: includes non-pattern and pattern terms
-  b. patterns: includes only terms which are patterns
+  - terms: includes non-pattern and pattern terms
+  - patterns: includes only terms which are patterns
 
 1. Bibliography.
 
