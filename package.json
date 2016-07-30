@@ -21,5 +21,9 @@
   },
   "homepage": "https://github.com/elgrancalavera/life-lexicon#readme",
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {},
+  "engines": {
+    "node": ">=6.3",
+    "npm": ">=3.10"
+  }
 }
