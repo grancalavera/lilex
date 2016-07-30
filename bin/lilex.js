@@ -67,5 +67,9 @@ The file that you need to use is lexicon.txt.
 Then run the following command:
 
 lilex [path/to/lexicon.txt] > lexicon.json
+
+For more see:
+https://github.com/elgrancalavera/lilex
+http://www.argentum.freeserve.co.uk/lex_home.htm
 `
 }
