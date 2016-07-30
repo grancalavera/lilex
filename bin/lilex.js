@@ -1,7 +1,13 @@
 const fs = require('fs')
     , path = require('path')
     , lilex = require('../lib/lilex')
-    , dataFile = resolveDataFile()
+
+if (wantsHelp()) {
+  console.log(usage())
+  return
+}
+
+const dataFile = resolveDataFile()
     , data = loadData(dataFile)
     , json = lilex.parse(data)
 
@@ -15,6 +21,11 @@ function loadData(apath) {
   }
 }
 
+function wantsHelp() {
+  var help = process.argv[2]
+  return (help == '-h' || help == '--help')
+}
+
 function resolveDataFile() {
   var apath = process.argv[2]
   if (!apath) bail('missing data file')
@@ -22,6 +33,30 @@ function resolveDataFile() {
 }
 
 function bail(message) {
-  console.error(message)
+  console.error('Fatal Error: ' + message)
+  console.error(usage())
   process.exit(1)
+}
+
+function usage() {
+  return `
+Usage
+
+Download and expand the plain text ASCII verion of the Life Lexicon. Once
+expanded, you will endup with a directoy with the following files:
+
+lex_asc
+├── README
+├── emacs.txt
+├── lexicon-clean.txt
+├── lexicon-small.txt
+├── lexicon.txt
+└── lifelex.el
+
+The file that you need to use is lexicon.txt.
+
+Then run the following command:
+
+lilex [path/to/lexicon.txt] > lexicon.json
+`
 }
