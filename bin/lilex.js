@@ -3,9 +3,16 @@
 const fs = require('fs')
     , path = require('path')
     , lilex = require('../lib/lilex')
+    , wantsHelp = wants('-h', '--help')
+    , wantsVersion = wants('-v', '--version')
 
-if (wantsHelp()) {
+if (wantsHelp) {
   console.log(usage())
+  return
+}
+
+if (wantsVersion) {
+  console.log(require('../package.json').version)
   return
 }
 
@@ -23,9 +30,9 @@ function loadData(apath) {
   }
 }
 
-function wantsHelp() {
-  var help = process.argv[2]
-  return (help == '-h' || help == '--help')
+function wants(short, long) {
+  const arg = process.argv[2]
+  return (arg == short || arg == long)
 }
 
 function resolveDataFile() {
