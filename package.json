@@ -4,7 +4,9 @@
   "description": "Parses Life Lexicon to JSON",
   "main": "lib/lilex.js",
   "bin": "bin/lilex.js",
-  "scripts": {},
+  "scripts": {
+    "build": "node bin/lilex var/lexicon.txt"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/elgrancalavera/life-lexicon.git"

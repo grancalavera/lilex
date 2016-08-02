@@ -2,7 +2,7 @@
 
 const fs = require('fs')
     , path = require('path')
-    , lilex = require('../lib/lilex')
+    , parseLexicon = require('../lib/parse-lexicon')
     , wantsHelp = wants('-h', '--help')
     , wantsVersion = wants('-v', '--version')
 
@@ -18,7 +18,7 @@ if (wantsVersion) {
 
 const dataFile = resolveDataFile()
     , data = loadData(dataFile)
-    , json = lilex.parse(data)
+    , json = parseLexicon(data)
 
 console.log(JSON.stringify(json, null, 2))
 
