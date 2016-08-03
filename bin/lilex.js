@@ -3,6 +3,7 @@
 const fs = require('fs')
     , path = require('path')
     , parseLexicon = require('../lib/parse-lexicon')
+    , renderLexicon = require('../lib/render-lexicon')
     , wantsHelp = wants('-h', '--help')
     , wantsVersion = wants('-v', '--version')
 
@@ -18,9 +19,10 @@ if (wantsVersion) {
 
 const dataFile = resolveDataFile()
     , data = loadData(dataFile)
-    , json = parseLexicon(data)
+    , lexicon = parseLexicon(data)
+    , es6Module = renderLexicon(lexicon)
 
-console.log(JSON.stringify(json, null, 2))
+fs.writeFileSync('lexicon.js', es6Module, 'utf8')
 
 function loadData(apath) {
   try {
