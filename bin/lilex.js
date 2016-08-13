@@ -45,7 +45,7 @@ function loadData(apath) {
 function resolveRenderer(format) {
   if (format === 'js') return renderJS
   if (format === 'json' || !format) return renderJSON
-  throw new Error(`Unknown format ${ format }`)
+  bail(`Unknown format ${ format }`)
 }
 
 function renderJS(lexicon) {
