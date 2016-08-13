@@ -2,11 +2,8 @@
   "name": "@grancalavera/lilex",
   "version": "1.0.9",
   "description": "Parses Life Lexicon to JSON",
-  "main": "dist/lexicon.js",
+  "main": "lib/lilex.js",
   "bin": "bin/lilex.js",
-  "scripts": {
-    "build": "node bin/lilex etc/lexicon.txt"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/elgrancalavera/life-lexicon.git"
@@ -22,7 +19,9 @@
     "url": "https://github.com/elgrancalavera/life-lexicon/issues"
   },
   "homepage": "https://github.com/elgrancalavera/life-lexicon#readme",
-  "dependencies": {},
+  "dependencies": {
+    "nopt": "^3.0.6"
+  },
   "devDependencies": {},
   "engines": {
     "node": ">=6.3",

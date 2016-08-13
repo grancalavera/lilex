@@ -1,40 +1,64 @@
 #!/usr/bin/env node
 
+const nopt = require('nopt')
+    , knowOpts = {
+        'help': Boolean
+      , 'version': Boolean
+      , 'format': ['json', 'js']
+      }
+    , shortHands = {
+        'h': ['--help']
+      , 'v': ['--version']
+      , 'json': ['--format', 'json']
+      , 'js': ['--format', 'js']
+      }
+    , cli_options = nopt(knowOpts, shortHands, process.argv)
+
+if (cli_options.help) {
+  console.log(usage())
+  process.exit()
+}
+
+if (cli_options.version) {
+  console.log(require('../package.json').version)
+  process.exit()
+}
+
 const fs = require('fs')
     , path = require('path')
-    , parseLexicon = require('../lib/parse-lexicon')
-    , renderLexicon = require('../lib/render-lexicon')
-    , wantsHelp = wants('-h', '--help')
-    , wantsVersion = wants('-v', '--version')
-
-if (wantsHelp) {
-  console.log(usage())
-  return
-}
-
-if (wantsVersion) {
-  console.log(require('../package.json').version)
-  return
-}
-
-const dataFile = resolveDataFile()
+    , dataFile = resolveDataFile()
     , data = loadData(dataFile)
-    , lexicon = parseLexicon(data)
-    , es6Module = renderLexicon(lexicon)
+    , parse = require('../lib/lilex')
+    , lexicon = parse(data)
+    , render = resolveRenderer(cli_options.format)
 
-fs.writeFileSync('lexicon.js', es6Module, 'utf8')
+console.log(render(lexicon))
 
 function loadData(apath) {
   try {
-    return fs.readFileSync(apath, 'utf8').split('\n')
+    return fs.readFileSync(apath, 'utf8')
   } catch (e) {
-    bail('unable to load data \n' + e.message)
+    bail(`Unable to load data from ${ apath }\n ${ e.message }`)
   }
 }
 
-function wants(short, long) {
-  const arg = process.argv[2]
-  return (arg == short || arg == long)
+function resolveRenderer(format) {
+  if (format === 'js') return renderJS
+  if (format === 'json' || !format) return renderJSON
+  throw new Error(`Unknown format ${ format }`)
+}
+
+function renderJS(lexicon) {
+  const comment = ls => ls.map( l => `// ${ l }`).join('\n')
+  return `
+${ comment( lexicon.introduction ) }
+${ comment( lexicon.bibliography ) }
+export default ${ renderJSON(lexicon.terms) }
+`
+}
+
+function renderJSON(json) {
+  return JSON.stringify(json, null, 2)
 }
 
 function resolveDataFile() {
@@ -53,8 +77,8 @@ function usage() {
   return `
 Usage
 
-Download and expand the plain text ASCII version of the Life Lexicon. Once
-expanded, you will end-up with a directory with the following files:
+Download and expand the plain text ASCII version of the Life Lexicon.
+Once expanded, you will end-up with a directory with the following files:
 
 lex_asc
 ├── README
