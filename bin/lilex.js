@@ -105,7 +105,9 @@ The file that you need to use is lexicon.txt.
 
 Then run the following command:
 
-lilex /path/to/lexicon.txt > lexicon.json
+lilex [path to lexicon.txt] > lexicon.json
+
+* Make sure to replace [path to lexicon.txt] with the actual path to lexicon.txt
 
 For more see:
 https://github.com/elgrancalavera/lilex
