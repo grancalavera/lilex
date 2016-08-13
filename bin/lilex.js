@@ -77,6 +77,19 @@ function usage() {
   return `
 Usage
 
+lilex <path>                      Parses the Life Lexicon and renders it
+                                  as JSON to stdout
+
+lilex <path> --format [json|js]   Changes the output format
+
+lilex <path> -json                Parses the Life Lexicon and renders it
+                                  as JSON to stdout
+
+lilex <path> -js                  Parses the Life Lexicon and renders it
+                                  as an ES2015 JavaScript module to stdout
+
+lilex --help                      Displays this message
+
 Download and expand the plain text ASCII version of the Life Lexicon.
 Once expanded, you will end-up with a directory with the following files:
 
@@ -92,7 +105,7 @@ The file that you need to use is lexicon.txt.
 
 Then run the following command:
 
-lilex [path/to/lexicon.txt] > lexicon.json
+lilex /path/to/lexicon.txt > lexicon.json
 
 For more see:
 https://github.com/elgrancalavera/lilex
