@@ -8,6 +8,9 @@
     "type": "git",
     "url": "git+https://github.com/elgrancalavera/life-lexicon.git"
   },
+  "scripts": {
+    "test": "echo 'hush hush'"
+  },
   "keywords": [
     "game of life",
     "life lexicon",

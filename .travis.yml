@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+- '6.3'
+deploy:
+  provider: npm
+  email: leoncoto@gmail.com
+  api_key:
+    secure: sTTtIbnXdV5PKMZJ12pGTuM4zdTiPeXngGCR03KaIvrTH6q4Ln4eUyklWIP2XR/dNJoKOeSX0HF6ex6JcS3vXm6keLH03lOw6o4VlVredn2i1bkNOjMtE5zDeaT/yv9ulhH1OH+h0zcL5VurXwtFYDHD+3ohtfxPoLdrHyXzhghXZpPB+9SJWj1pyftYekG6Lmj0Vi3qCj6nHo6XPcRbmyMndDbRy8f121dLC+hDCebXCdEi5HUwHXLrNq5XoU6jnQ/rhDob4aROJmJWsAGSj9Z580QQem5koRZgqbXLzRSyalDakLtlbMdNSTntN6RdU4HK8acO0p2bYWsUcjl2cHUJ3w5YKcpQ/+98SHefc5EfRTt0NI1KtYUNE1Xjcv9Dwd2hZo5z3XhXm1vF/tdhe9cVNCgU+sVRn6qfyJ8FR5GT2uaS0VaZ5XId0fVVA6nfIaWLtBHPSflwLziDq3QGAvk6+zGvM3nJ2b/IUAyk6d3ONT7F9oAdG3WNJ0N1XNHBVeMWSPTFA9SzVNC+xWi22zzrZ7pfC52rFUqBdpkaSN7HS8ZQ8wT25XhqurNbrdIXrTrmpSV8y4dL6iFrNzUhn/Fzt97KmputFcYhT+OS3s6zP3C0KW1KqG7cxuOx9v4vYXGLcfM3IQLr+r91XJan44wrwV6rqLl9Z59IdCob0Xo=
+  on:
+    tags: true
+    repo: elgrancalavera/lilex
