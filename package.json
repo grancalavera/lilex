@@ -1,6 +1,6 @@
 {
   "name": "@grancalavera/lilex",
-  "version": "1.0.9",
+  "version": "1.1.0-0",
   "description": "Parses Life Lexicon to JSON",
   "main": "lib/lilex.js",
   "bin": "bin/lilex.js",
