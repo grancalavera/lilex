@@ -10,6 +10,8 @@ The Life Lexicon
 
 The latest versions of this lexicon (both HTML and ASCII) should be available from the [Life Lexicon Home Page][life-lexicon].
 
+You can also find a backup version of the Life lexicon [here][life-lexicon-backup]
+
 ## Requirements
 
 Download and expand the [plain text ASCII version][life-lexicon-ascii] of the Life Lexicon. Once expanded, you will end-up with a directory with the following files:
@@ -77,3 +79,4 @@ By default, running lilex with a valid path to `lexicon.txt` will produce a JSON
 
 [life-lexicon]:http://www.argentum.freeserve.co.uk/lex_home.htm
 [life-lexicon-ascii]:http://www.argentum.freeserve.co.uk/lex_asc.zip
+[life-lexicon-backup]:https://github.com/elgrancalavera/lex_asc
