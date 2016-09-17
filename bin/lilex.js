@@ -111,6 +111,7 @@ lilex [path to lexicon.txt] > lexicon.json
 
 For more see:
 https://github.com/elgrancalavera/lilex
+https://github.com/elgrancalavera/lex_asc
 http://www.argentum.freeserve.co.uk/lex_home.htm
 `
 }
