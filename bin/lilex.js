@@ -49,12 +49,7 @@ function resolveRenderer(format) {
 }
 
 function renderJS(lexicon) {
-  const comment = ls => ls.map( l => `// ${ l }`).join('\n')
-  return `
-${ comment( lexicon.introduction ) }
-${ comment( lexicon.bibliography ) }
-export default ${ renderJSON(lexicon.terms) }
-`
+  return `export default ${ renderJSON(lexicon) }`
 }
 
 function renderJSON(json) {
