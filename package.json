@@ -3,13 +3,14 @@
   "version": "1.1.0-2",
   "description": "Parses Life Lexicon to JSON",
   "main": "lib/lilex.js",
-  "bin": "bin/lilex.js",
+  "bin": "bin/lilex",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/elgrancalavera/life-lexicon.git"
   },
   "scripts": {
-    "test": "echo 'hush hush'"
+    "lilex": "node bin/lilex ./lex_asc/lexicon.txt -js > src/lexicon.js",
+    "start": "watch 'npm run lilex' bin"
   },
   "keywords": [
     "game of life",
@@ -23,9 +24,13 @@
   },
   "homepage": "https://github.com/elgrancalavera/life-lexicon#readme",
   "dependencies": {
-    "nopt": "^3.0.6"
+    "nopt": "^3.0.6",
+    "watch": "^0.19.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "npm-run-all": "^3.1.0",
+    "watch": "^0.19.2"
+  },
   "engines": {
     "node": ">=6.3",
     "npm": ">=3.10"

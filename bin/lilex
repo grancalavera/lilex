@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-
 const nopt = require('nopt')
     , knowOpts = {
         'help': Boolean
@@ -28,7 +27,7 @@ const fs = require('fs')
     , path = require('path')
     , dataFile = resolveDataFile()
     , data = loadData(dataFile)
-    , parse = require('../lib/lilex')
+    , parse = require('./parse')
     , lexicon = parse(data)
     , render = resolveRenderer(cli_options.format)
 
@@ -43,13 +42,16 @@ function loadData(apath) {
 }
 
 function resolveRenderer(format) {
-  if (format === 'js') return renderJS
-  if (format === 'json' || !format) return renderJSON
-  bail(`Unknown format ${ format }`)
+  switch(format) {
+    case 'js': return renderJS
+    case 'json': return renderJSON
+    default: bail(`Unknown format ${ format }`)
+  }
 }
 
 function renderJS(lexicon) {
-  return `export default ${ renderJSON(lexicon) }`
+  return `// Generated on ${ new Date() }
+export default ${ renderJSON(lexicon) }`
 }
 
 function renderJSON(json) {
