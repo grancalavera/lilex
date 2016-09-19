@@ -1,6 +1,6 @@
 # lilex
 
-> Parses Life Lexicon to JSON
+> Parses Life Lexicon to JSON and JavaScript
 
 ## The Life lexicon
 
@@ -9,6 +9,8 @@ The Life Lexicon
 > ... is a lexicon of terms relating to John Horton Conway's Game of Life.
 
 The latest versions of this lexicon (both HTML and ASCII) should be available from the [Life Lexicon Home Page][life-lexicon].
+
+You can also find a backup version of the Life lexicon [here][life-lexicon-backup]
 
 ## Requirements
 
@@ -26,19 +28,34 @@ lex_asc
 
 The file that you need to use is `lexicon.txt`.
 
-## Usage
+## Installation
 
 ```
 npm install -g @grancalavera/lilex
+```
 
-lilex [path/to/lexicon.txt] > lexicon.json
+## Usage
+
+```
+lilex <path>                      Parses the Life Lexicon and renders it
+                                  as JSON to stdout
+
+lilex <path> --format [json|js]   Changes the output format
+
+lilex <path> -json                Parses the Life Lexicon and renders it
+                                  as JSON to stdout
+
+lilex <path> -js                  Parses the Life Lexicon and renders it
+                                  as an ES2015 JavaScript module to stdout
+
+lilex --help                      Displays this message
 ```
 
 ## Why?
 
 I was looking for sources of patterns for a Game of Life side project, and I ended up finding the [Life Lexicon Home Page][life-lexicon], which is an amazing on-line resource of all-things Game of Life. I started copy pasting pattens and writing small scripts to convert them into consumable JSON data, and at some point I decided I wanted them all.
 
-There are several download formats for the Life Lexicon, and the [plain text ASCII version][life-lexicon-ascii] is very regular and easy to parse. And that's the story.
+There are several download formats for the Life Lexicon. The [plain text ASCII version][life-lexicon-ascii] is very regular and easy to parse and that's the reason why I chose to work with it.
 
 ## What will you get?
 
@@ -46,22 +63,20 @@ The Life Lexicon is divided in to three main sections:
 
 1. An introductory section. This section includes a brief introduction to the Life Lexicon, along with credits, project description, format description and project scope.
 
-1. A list of terms related to the Game of Life. Some of this terms are patters and some of them are not. lilex parses all the terms and them split them into two separate categories:
-    - terms: includes non-pattern and pattern terms
-    - patterns: includes only terms which are patterns
+1. A list of terms related to the Game of Life. Some of this terms are patters and some of them are not.
 
 1. Bibliography.
 
-Running lilex will produce a JSON stream to stdout. This stream is a single object with three entries, which looks like this:
+By default, running lilex with a valid path to `lexicon.txt` will produce a JSON stream to stdout. This stream is string representation of a single JSON object with three fields:
 
 ```
 {
   "introduction": ...,
   "terms": ...,
-  "patterns": ...,
   "bibliography": ...
 }
 ```
 
 [life-lexicon]:http://www.argentum.freeserve.co.uk/lex_home.htm
 [life-lexicon-ascii]:http://www.argentum.freeserve.co.uk/lex_asc.zip
+[life-lexicon-backup]:https://github.com/elgrancalavera/lex_asc
