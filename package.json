@@ -3,7 +3,7 @@
   "version": "1.1.0-3",
   "description": "Parses Life Lexicon to JSON",
   "main": "dist/lilex.js",
-  "bin": "bin/lilex",
+  "bin": "bin/lilex.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/elgrancalavera/life-lexicon.git"
