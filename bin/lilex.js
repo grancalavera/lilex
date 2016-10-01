@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 const nopt = require('nopt')
+    , babel = require('babel-core')
     , knowOpts = {
         'help': Boolean
       , 'version': Boolean
@@ -50,8 +51,12 @@ function resolveRenderer(format) {
 }
 
 function renderJS(lexicon) {
-  return `// Generated on ${ new Date() }
+  const esmodule =
+`// Generated on ${ new Date() }
 export default ${ renderJSON(lexicon) }`
+  return babel
+    .transform(esmodule, { compact: true, sourceMaps: 'inline' })
+    .code
 }
 
 function renderJSON(json) {
@@ -102,9 +107,9 @@ The file that you need to use is lexicon.txt.
 
 Then run the following command:
 
-lilex [path to lexicon.txt] > lexicon.json
+lilex <path to lexicon.txt> > lilex.json
 
-* Make sure to replace [path to lexicon.txt] with the actual path to lexicon.txt
+* Make sure to replace <path to lexicon.txt> with the actual path to lexicon.txt
 
 For more see:
 https://github.com/elgrancalavera/lilex

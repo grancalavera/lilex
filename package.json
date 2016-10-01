@@ -2,16 +2,17 @@
   "name": "@grancalavera/lilex",
   "version": "1.1.0-2",
   "description": "Parses Life Lexicon to JSON",
-  "main": "lib/lilex.js",
+  "main": "dist/lilex.js",
   "bin": "bin/lilex",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/elgrancalavera/life-lexicon.git"
   },
   "scripts": {
-    "lilex": "node bin/lilex ./lex_asc/lexicon.txt -js > src/lexicon.js",
-    "depcheck": "depcheck .",
-    "start": "watch 'npm run lilex' bin"
+    "lilex": "node bin/lilex ./lex_asc/lexicon.txt -js > dist/lilex.js",
+    "start": "watch 'npm run lilex' bin",
+    "clean": "rimraf dist/*",
+    "build": "npm run clean && mkdirp dist && npm run lilex"
   },
   "keywords": [
     "game of life",
@@ -29,7 +30,10 @@
     "watch": "^0.19.2"
   },
   "devDependencies": {
-    "depcheck": "^0.6.4",
+    "babel-core": "^6.16.0",
+    "babel-plugin-transform-es2015-modules-umd": "^6.12.0",
+    "mkdirp": "^0.5.1",
+    "rimraf": "^2.5.4",
     "watch": "^0.19.2"
   },
   "engines": {

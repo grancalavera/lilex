@@ -36,5 +36,7 @@ jspm_packages
 # Optional REPL history
 .node_repl_history
 
+# lilex
 *.sublime-workspace
-src/lexicon.js
+src
+dist
