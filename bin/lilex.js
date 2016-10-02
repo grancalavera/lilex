@@ -55,7 +55,13 @@ function renderJS(lexicon) {
 `// Generated on ${ new Date() }
 export default ${ renderJSON(lexicon) }`
   return babel
-    .transform(esmodule, { compact: true, sourceMaps: 'inline' })
+    .transform(
+      esmodule
+    , { compact: true
+      , sourceMaps: 'inline'
+      , plugins: [ 'transform-es2015-modules-umd' ]
+      }
+    )
     .code
 }
 
