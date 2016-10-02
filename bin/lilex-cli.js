@@ -25,8 +25,11 @@ function resolveRenderer(format) {
 
 function renderJS(lexicon) {
   const esmodule =
-`// Generated on ${ new Date() }
-export default ${ renderJSON(lexicon) }`
+`
+// Generated on ${ new Date() }
+export const lexicon = ${ renderJSON(lexicon) }
+export default lexicon
+`
   return babel
     .transform(
       esmodule
