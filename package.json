@@ -11,8 +11,8 @@
   "scripts": {
     "lilex": "node bin/lilex ./lex_asc/lexicon.txt -js > dist/lilex.js",
     "start": "watch 'npm run lilex' bin",
-    "clean": "rimraf dist/*",
-    "build": "npm run clean && && npm run depcheck && mkdirp dist && npm run lilex",
+    "clean": "rimraf dist/* && mkdirp dist",
+    "build": "npm run clean && npm run depcheck && npm run lilex",
     "depcheck": "depcheck . --ignore-dirs=dist,lex_asc --ignores=babel-plugin-*",
     "eslint": "eslint"
   },
