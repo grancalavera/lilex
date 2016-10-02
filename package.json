@@ -15,7 +15,8 @@
     "build": "mkdirp dist && npm run lilex",
     "depcheck": "depcheck . --ignore-dirs=dist,lex_asc --ignores=babel-plugin-*",
     "eslint": "eslint",
-    "prepublish": "npm run depcheck && npm run build"
+    "prepublish": "npm run depcheck && npm run build",
+    "test": "echo 'what tests?'"
   },
   "keywords": [
     "game of life",
