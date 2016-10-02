@@ -12,7 +12,9 @@
     "lilex": "node bin/lilex ./lex_asc/lexicon.txt -js > dist/lilex.js",
     "start": "watch 'npm run lilex' bin",
     "clean": "rimraf dist/*",
-    "build": "npm run clean && mkdirp dist && npm run lilex"
+    "build": "npm run clean && && npm run depcheck && mkdirp dist && npm run lilex",
+    "depcheck": "depcheck . --ignore-dirs=dist,lex_asc --ignores=babel-plugin-*",
+    "eslint": "eslint"
   },
   "keywords": [
     "game of life",
@@ -32,6 +34,8 @@
   "devDependencies": {
     "babel-core": "^6.16.0",
     "babel-plugin-transform-es2015-modules-umd": "^6.12.0",
+    "depcheck": "^0.6.4",
+    "eslint": "^3.7.0",
     "mkdirp": "^0.5.1",
     "rimraf": "^2.5.4",
     "watch": "^0.19.2"

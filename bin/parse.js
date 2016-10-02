@@ -1,6 +1,3 @@
-const fs = require('fs')
-    , path = require('path')
-
 module.exports = lexicon_txt => parseLexiconLines(lexicon_txt.split('\n'))
 
 function parseLexiconLines(lines) {
@@ -98,9 +95,9 @@ function cleanDescriptionLine(line) {
     .replace(/\}/g, '')
     .replace(periodRe, '')
     .replace(nameRe, '')
-    .replace(/  +/g, ' ')
-    .replace(/^ /, '')
-    .replace(/ $/, '')
+    .replace(/(?:\s{2})+/g, ' ')
+    .replace(/^\s/, '')
+    .replace(/\s$/, '')
 }
 
 function addLinks(term, line) {
@@ -126,12 +123,4 @@ function last(array) {
 
 function nonEmptySection(sectionLines) {
   return !!sectionLines.length
-}
-
-function isPattern(term) {
-  return !!term.pattern
-}
-
-function flatten(flat, lines) {
-  return flat.concat(lines)
 }
