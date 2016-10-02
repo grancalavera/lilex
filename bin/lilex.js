@@ -26,13 +26,14 @@ if (cli_options.version) {
   process.exit()
 }
 
-const dataFile = cli.resolveDataFile(process.argv[2])
-    , data = cli.loadData(dataFile)
-    , lexicon = parse(data)
-    , render = cli.resolveRenderer(cli_options.format)
-
 try {
+  const dataFile = cli.resolveDataFile(process.argv[2])
+      , data = cli.loadData(dataFile)
+      , lexicon = parse(data)
+      , render = cli.resolveRenderer(cli_options.format)
+
   console.log(render(lexicon))
+
 } catch (e) {
   console.error(e.message)
   console.error(cli.usage())
