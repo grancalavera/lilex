@@ -1,8 +1,12 @@
-const fs = require('fs')
-    , path = require('path')
+module.exports = lexicon_txt => parseLexiconLines(lexicon_txt.split('\n'))
+
+function parseLexiconLines(lines) {
+  const termLines = findMainSections(lines)[1]
+  return findTerms(termLines)
+}
 
 const linkRe = /(?:\{([^\{]+)\})/g
-    , termRe = /^:(.+):/
+    , nameRe = /^:(.+):/
     , patternLineRe = /^\t([\.\*]+)$/
     , mainSectionDividerRe = /^(\-)+$/
     , periodRe = /\(p(\d+)\)/
@@ -23,42 +27,51 @@ const findSections = (dividerRe, keepDividerLine) => lines => {
 }
 
 const findMainSections = findSections(mainSectionDividerRe)
-    , findContentSections = findSections(termRe, true)
-    , findSimpleSections = findSections(emptyLineRe)
-
-module.exports.parse = lines => {
-  const [ introLines, termLines, biblioLines ] = findMainSections(lines)
-      , terms = findTerms(termLines)
-
-  return {
-    terms: terms
-  , patterns: terms.filter(isPattern)
-  , introduction: findSimpleSections(introLines)
-  , bibliography: findSimpleSections(biblioLines)
-  }
-}
+    , findContentSections = findSections(nameRe, true)
 
 function findTerms(lines) {
   return findContentSections(lines)
     .map(parseTerm)
-    .filter(({ term }) => !!term )
+    .filter(({ name }) => !!name )
 }
 
 function parseTerm(lines) {
-  return lines.reduce((term, line) => {
-    addTerm(term, line)
+  const term = lines.reduce((term, line) => {
+    addName(term, line)
     addPeriod(term, line)
     addDescription(term, line)
     addLinks(term, line)
-    addPatternLine(term, line)
+    addPatternRow(term, line)
     return term
   }, {})
+  delete term.pattern_
+  return term
 }
 
-function addTerm(term, line) {
-  const matches = termRe.exec(line)
+function addPatternRow(term, line) {
+  const matches = patternLineRe.exec(line)
   if (!matches) return
-  term.term = matches[1]
+
+  const row = matches[1].split('').map(toBinary)
+  term.pattern_ = (term.pattern_ || []).concat([ row ])
+  term.width = term.pattern_[0].length
+  term.height = term.pattern_.length
+
+  const patternCoords = rowToCoords(row, term.height - 1)
+  term.pattern = (term.pattern || []).concat(patternCoords)
+}
+
+function rowToCoords(row, y) {
+  return row.reduce((coords, isAlive, x) => {
+    if (!isAlive) return coords
+    return coords.concat([[x, y]])
+  }, [])
+}
+
+function addName(term, line) {
+  const matches = nameRe.exec(line)
+  if (!matches) return
+  term.name = matches[1]
 }
 
 function addPeriod(term, line) {
@@ -73,7 +86,7 @@ function addDescription(term, line) {
       , description = term.description || ''
 
   if (isEmptyLine || isPatternLine) return
-  term.description = description + cleanDescriptionLine(line)
+  term.description = description + ' ' + cleanDescriptionLine(line)
 }
 
 function cleanDescriptionLine(line) {
@@ -81,11 +94,10 @@ function cleanDescriptionLine(line) {
     .replace(/\{/g, '')
     .replace(/\}/g, '')
     .replace(periodRe, '')
-    .replace(termRe, '')
-    .replace(/  +/g, ' ')
-    .replace(/^ /, '')
-    .replace(/ $/, '')
-    + ' '
+    .replace(nameRe, '')
+    .replace(/(?:\s{2})+/g, ' ')
+    .replace(/^\s/, '')
+    .replace(/\s$/, '')
 }
 
 function addLinks(term, line) {
@@ -101,18 +113,6 @@ function findLinks(line) {
   return links
 }
 
-function addPatternLine(term, line) {
-  const matches = patternLineRe.exec(line)
-  if (!matches) return
-  term.pattern = (term.pattern || []).concat(toPatternLine(matches))
-  term.width = term.pattern[0].length
-  term.height = term.pattern.length
-}
-
-function toPatternLine(matches) {
-  return [ matches[1].split('').map( toBinary ) ]
-}
-
 function toBinary(char) {
   return { '.': 0, '*': 1 }[char]
 }
@@ -123,8 +123,4 @@ function last(array) {
 
 function nonEmptySection(sectionLines) {
   return !!sectionLines.length
-}
-
-function isPattern(term) {
-  return !!term.pattern
 }

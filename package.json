@@ -1,13 +1,22 @@
 {
   "name": "@grancalavera/lilex",
-  "version": "1.0.9",
+  "version": "1.1.0-9",
   "description": "Parses Life Lexicon to JSON",
-  "main": "lib/lilex.js",
+  "main": "dist/lilex.js",
   "bin": "bin/lilex.js",
-  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/elgrancalavera/life-lexicon.git"
+  },
+  "scripts": {
+    "lilex": "node bin/lilex ./lex_asc/lexicon.txt -js > dist/lilex.js",
+    "start": "watch 'npm run lilex' bin",
+    "clean": "rimraf dist/*",
+    "build": "mkdirp dist && npm run lilex",
+    "depcheck": "depcheck . --ignore-dirs=dist,lex_asc --ignores=babel-plugin-*",
+    "eslint": "eslint",
+    "prepublish": "npm run depcheck && npm run build",
+    "test": "echo 'what tests?'"
   },
   "keywords": [
     "game of life",
@@ -20,8 +29,18 @@
     "url": "https://github.com/elgrancalavera/life-lexicon/issues"
   },
   "homepage": "https://github.com/elgrancalavera/life-lexicon#readme",
-  "dependencies": {},
-  "devDependencies": {},
+  "dependencies": {
+    "nopt": "^3.0.6"
+  },
+  "devDependencies": {
+    "watch": "^0.19.2",
+    "babel-core": "^6.16.0",
+    "babel-plugin-transform-es2015-modules-umd": "^6.12.0",
+    "depcheck": "^0.6.4",
+    "eslint": "^3.7.0",
+    "mkdirp": "^0.5.1",
+    "rimraf": "^2.5.4"
+  },
   "engines": {
     "node": ">=6.3",
     "npm": ">=3.10"
