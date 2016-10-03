@@ -66,29 +66,5 @@ lilex <path> -js                  Parses the Life Lexicon and renders it
                                   as an ES2015 JavaScript module to stdout
 
 lilex --help                      Displays this message
-
-Download and expand the plain text ASCII version of the Life Lexicon.
-Once expanded, you will end-up with a directory with the following files:
-
-lex_asc
-├── README
-├── emacs.txt
-├── lexicon-clean.txt
-├── lexicon-small.txt
-├── lexicon.txt
-└── lifelex.el
-
-The file that you need to use is lexicon.txt.
-
-Then run the following command:
-
-lilex <path to lexicon.txt> > lilex.json
-
-* Make sure to replace <path to lexicon.txt> with the actual path to lexicon.txt
-
-For more see:
-https://github.com/elgrancalavera/lilex
-https://github.com/elgrancalavera/lex_asc
-http://www.argentum.freeserve.co.uk/lex_home.htm
 `
 }
